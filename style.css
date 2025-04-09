@@ -1,0 +1,362 @@
+/* General Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  touch-action: manipulation;
+  user-select: none;
+}
+
+body {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  background-color: #f9e2e8;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* Start Screen */
+#start-screen {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff5f8;
+  z-index: 100;
+}
+
+.title-container {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+h1 {
+  font-size: 3rem;
+  color: #d35d6e;
+  text-shadow: 3px 3px 0 #f9b4c0;
+  margin-bottom: 1rem;
+}
+
+.title-mochi {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background-color: #f8a5c2;
+  border-radius: 50%;
+  border: 3px solid #d35d6e;
+  top: -15px;
+  right: -25px;
+  transform: rotate(20deg);
+  z-index: -1;
+}
+
+button {
+  margin-top: 2rem;
+  padding: 0.8rem 1.5rem;
+  font-size: 1.2rem;
+  background-color: #f8a5c2;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #d35d6e;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+button:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #d35d6e;
+}
+
+/* Game Container */
+#game-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.hud {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 10;
+}
+
+.hud div {
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 1rem;
+  color: #8c5e6e;
+  font-weight: bold;
+}
+
+#game-area {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  background-color: #fbe7e7;
+}
+
+/* Mochi Character */
+.mochi {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  transition: left 0.1s, top 0.1s;
+}
+
+/* Player Mochi */
+#player {
+  width: 60px;
+  height: 60px;
+  left: 50%;
+  bottom: 20%;
+}
+
+/* Mochi Friends (smaller) */
+.mochi-friend {
+  width: 30px;
+  height: 30px;
+}
+
+/* Mochi Enemies (different color) */
+.mochi-enemy {
+  width: 40px;
+  height: 40px;
+}
+
+/* Mochi Parts */
+.mochi__wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.mochi__leaf {
+  position: absolute;
+  z-index: 1000;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  left: 50%;
+  bottom: 100%;
+  box-shadow: 0 0 0 3px #665867;
+  width: 20px;
+  height: 15px;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  border-top-right-radius: 50%;
+  background: #7ea674;
+}
+
+.mochi__leaf:before,
+.mochi__leaf:after {
+  content: "";
+  display: block;
+  position: absolute;
+}
+
+.mochi__leaf:before {
+  top: -4px;
+  left: 6px;
+  width: 100%;
+  height: 100%;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  border-top-right-radius: 50%;
+  background: #9fd191;
+}
+
+.mochi__leaf:after {
+  left: 50%;
+  bottom: 0;
+  width: 4px;
+  height: 10px;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 4px;
+  background: #665867;
+}
+
+.mochi__leaf:nth-child(1) {
+  transform: translate(-4px, -8px) rotate(80deg) skewX(40deg) skewY(-6deg);
+}
+
+.mochi__leaf:nth-child(1):after {
+  transform: rotate(-60deg) translateX(-50%) translateX(2px) translateY(2px);
+}
+
+.mochi__leaf:nth-child(2) {
+  transform: translate(-25px, 0px) rotate(0deg) skewX(40deg) skewY(-6deg);
+}
+
+.mochi__leaf:nth-child(2):after {
+  transform: rotate(-60deg) translateX(-50%) translateX(2px) translateY(2px);
+}
+
+.mochi__body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #f8a5c2;
+  box-shadow: 0 0 0 3px #d35d6e;
+  overflow: hidden;
+}
+
+.mochi__body:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 15px;
+  border-radius: 50%;
+  background: #f9b4c0;
+}
+
+/* Enemy variation */
+.mochi-enemy .mochi__body {
+  background: #ff6b6b;
+  box-shadow: 0 0 0 3px #d35d6e;
+}
+
+.mochi-enemy .mochi__body:before {
+  background: #ff8e8e;
+}
+
+.mochi__bites {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: translate(2px, -1px) rotate(-10deg) skewX(12deg);
+}
+
+.mochi__bites *:before,
+.mochi__bites *:after {
+  content: "";
+  display: block;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.mochi__bites--base:before {
+  top: -6px;
+  right: -6px;
+  width: 30px;
+  height: 30px;
+  background: #665867;
+}
+
+.mochi__bites--base:after {
+  width: 30px;
+  height: 30px;
+  top: 12px;
+  right: -12px;
+  background: #665867;
+}
+
+.mochi__bites--middle:before {
+  top: -3px;
+  right: -3px;
+  width: 24px;
+  height: 24px;
+  background: #f9b4c0;
+}
+
+.mochi__bites--middle:after {
+  width: 24px;
+  height: 24px;
+  top: 15px;
+  right: -9px;
+  background: #f9b4c0;
+}
+
+.mochi__bites--top:before {
+  top: 0px;
+  right: 0px;
+  width: 18px;
+  height: 18px;
+  background: #fce4e4;
+}
+
+.mochi__bites--top:after {
+  top: 18px;
+  right: -6px;
+  width: 18px;
+  height: 18px;
+  background: #fce4e4;
+}
+
+/* Game Over Screen */
+#game-over-screen {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 245, 248, 0.9);
+  z-index: 50;
+}
+
+#game-over-screen h1 {
+  font-size: 3rem;
+  color: #d35d6e;
+  margin-bottom: 1rem;
+}
+
+#game-over-screen p {
+  font-size: 1.5rem;
+  color: #8c5e6e;
+  margin-bottom: 2rem;
+}
+
+/* Animations */
+@keyframes float {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) translateY(0);
+  }
+  50% {
+    transform: translate(-50%, -50%) translateY(-5px);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.collect-effect {
+  animation: pulse 0.3s ease-out;
+}
+
+/* Particles */
+.particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: #f8a5c2;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.enemy-particle {
+  background-color: #ff6b6b;
+}

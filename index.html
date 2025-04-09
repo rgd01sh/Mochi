@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Mochi Run</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Start Screen -->
+    <div id="start-screen">
+      <div class="title-container">
+        <h1>Mochi Run</h1>
+        <div class="title-mochi"></div>
+      </div>
+      <p>Collect friends, avoid enemies!</p>
+      <button id="start-btn">Start Game</button>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="game-container" style="display: none">
+      <div class="hud">
+        <div class="score">Friends: <span id="score">0</span></div>
+        <div class="timer">Time: <span id="time">30</span>s</div>
+      </div>
+
+      <div id="game-area">
+        <!-- Player Mochi -->
+        <div id="player" class="mochi">
+          <div class="mochi__wrapper">
+            <div class="mochi__leaves">
+              <div class="mochi__leaf"></div>
+              <div class="mochi__leaf"></div>
+            </div>
+            <div class="mochi__body">
+              <div class="mochi__bites">
+                <div class="mochi__bites--base"></div>
+                <div class="mochi__bites--middle"></div>
+                <div class="mochi__bites--top"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Friends and Enemies will be added here by JavaScript -->
+      </div>
+    </div>
+
+    <!-- Game Over Screen -->
+    <div id="game-over-screen" style="display: none">
+      <h1 id="result-message">Game Over</h1>
+      <p>You collected <span id="final-score">0</span> mochi friends!</p>
+      <button id="restart-btn">Play Again</button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
